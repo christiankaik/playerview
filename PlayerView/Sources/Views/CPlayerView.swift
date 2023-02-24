@@ -20,8 +20,11 @@ struct CPlayerView: View {
                         showControls.toggle()
                     }
                 }
-            PlayerControlsView(scrubber: scrubber, showControls: $showControls)
-            PreviewWindowView(scrubber: scrubber)
+            VStack(alignment: .leading) {
+                Spacer()
+                PreviewWindowView(scrubber: scrubber)
+                PlayerControlsView(scrubber: scrubber, showControls: $showControls)
+            }
         }
         .persistentSystemOverlays(.hidden)
         .background(.black)

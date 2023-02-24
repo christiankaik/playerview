@@ -10,12 +10,8 @@ struct PlayerControlsView: View {
     }
 
     var body: some View {
-        VStack {
-            Spacer()
-
-            PlayerControls(scrubber: viewModel.scrubber) {
-                viewModel.refreshIdleTimerIfPlaying()
-            }.padding()
+        PlayerControls(scrubber: viewModel.scrubber) {
+            viewModel.refreshIdleTimerIfPlaying()
         }
         .opacity(showControls ? 1 : 0)
         .onReceive(viewModel.$showControls) { showControls in
