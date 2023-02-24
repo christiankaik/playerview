@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension Scrubber {
+extension ScrubberView {
     private static let normalHeight: CGFloat = 4
     private static let normalHeightCornerRadius: CGFloat = 2
 
@@ -32,7 +32,7 @@ extension Scrubber {
     }
 }
 
-struct Scrubber: View {
+struct ScrubberView: View {
     @Binding var value: Double
     let minTrackColor: Color
     let maxTrackColor: Color
@@ -134,11 +134,11 @@ struct Scrubber: View {
     }
 }
 
-struct ScrubberV2_Previews: PreviewProvider {
+struct ScrubberView_Previews: PreviewProvider {
     @State static var test: Double = 0.5
 
     static var previews: some View {
-        Scrubber(value: $test, onScrubbing: { _, _  in })
+        ScrubberView(value: $test, onScrubbing: { _, _  in })
             .padding()
     }
 }

@@ -2,19 +2,26 @@ import AVFoundation
 import SwiftUI
 
 struct CPlayerView: View {
-    @StateObject private var player = PlayerController(url: streamUrl)
-    private let preview = AssetImageLoader(asset: nil, maximumWidth: 150)
+    private let scrubber: Scrubber
+    private let player: Player
+
     @State private var showControls: Bool = true
+
+    init(player: AVPlayer) {
+        self.player = Player(player: player)
+        self.scrubber = Scrubber(player: self.player)
+    }
 
     var body: some View {
         ZStack {
-            VideoContentView(player) {
-                withAnimation(.spring()) {
-                    showControls.toggle()
+            VideoContentView(scrubber.player)
+                .onTapGesture {
+                    withAnimation(.spring()) {
+                        showControls.toggle()
+                    }
                 }
-            }
-            PlayerControlsView(player: player, showControls: $showControls)
-            PreviewWindowView(player: player)
+            PlayerControlsView(scrubber: scrubber, showControls: $showControls)
+            PreviewWindowView(scrubber: scrubber)
         }
         .persistentSystemOverlays(.hidden)
         .background(.black)
@@ -23,7 +30,7 @@ struct CPlayerView: View {
 
 struct CPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        CPlayerView()
+        CPlayerView(player: AVPlayer(url: streamUrl))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
