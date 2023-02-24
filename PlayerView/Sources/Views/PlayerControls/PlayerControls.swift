@@ -48,7 +48,8 @@ struct PlayerControls: View {
             ScrubberView(
                 value: $progress,
                 minTrackColor: .white,
-                maxTrackColor: Color(uiColor: .lightGray)
+                maxTrackColor: Color(uiColor: .lightGray),
+                coordinateSpace: .playerControls
             ) { scrubbing, progress in
                 viewModel.scrubber.scrub(scrubbing, to: progress)
                 onInteract?()

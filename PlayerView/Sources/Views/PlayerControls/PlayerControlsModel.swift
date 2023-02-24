@@ -102,7 +102,7 @@ final class PlayerControlsModel: ObservableObject {
     }
 
     private func refreshEndTime() {
-        if let durationSeconds, let timeSeconds {
+        if let durationSeconds, let timeSeconds, !durationSeconds.isNaN, !timeSeconds.isNaN {
             switch durationMode {
             case .differenceToCurrentTime:
                 endTime = "-\((durationSeconds - timeSeconds).durationFormatted)"

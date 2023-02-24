@@ -34,22 +34,28 @@ extension ScrubberView {
 
 struct ScrubberView: View {
     @Binding var value: Double
+
     let minTrackColor: Color
     let maxTrackColor: Color
     let onScrubbing: ((Bool, Double?) -> Void)
+
     @GestureState private var gestureState: ScrubbingState = .inactive
+
     private var translation: CGSize { gestureState.translation }
     private var offsetY: CGFloat { (Self.maxHeight - height) / 2 }
+
     private var height: CGFloat {
         gestureState.isDragging ?
         Self.maxHeight :
         Self.normalHeight
     }
+
     private var cornerRadius: CGFloat {
         gestureState.isDragging ?
         Self.maxHeightCornerRadius :
         Self.normalHeightCornerRadius
     }
+
     private var scaleEffect: CGSize {
         return CGSize(
             width: (gestureState == .pressing) ? 0.99 : 1,
@@ -60,7 +66,9 @@ struct ScrubberView: View {
     init(value: Binding <Double>,
          minTrackColor: Color = .accentColor,
          maxTrackColor: Color = .gray,
-         onScrubbing: @escaping ((Bool, Double?) -> Void)) {
+         coordinateSpace: PlayerCoordinateSpace = .playerControls,
+         onScrubbing: @escaping ((Bool, Double?) -> Void)
+    ) {
         _value = value
         self.minTrackColor = minTrackColor
         self.maxTrackColor = maxTrackColor
@@ -82,6 +90,7 @@ struct ScrubberView: View {
             .offset(y: offsetY)
             .animation(.interactiveSpring(), value: height)
             .animation(.interactiveSpring(), value: scaleEffect)
+            .preference(key: ScrubberFrameKey.self, value: proxy.frame(in: .playerControls))
         }
         .frame(height: Self.maxHeight)
         .onChange(of: gestureState) { state in

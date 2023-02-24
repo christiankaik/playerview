@@ -6,9 +6,11 @@ final class Scrubber {
 
     var isScrubbing: AnyPublisher<Bool, Never> { isScrubbingSubject.eraseToAnyPublisher() }
     var time: AnyPublisher<TimeInterval?, Never> { timeSubject.eraseToAnyPublisher() }
+    var progress: AnyPublisher<Double, Never> { progressSubject.eraseToAnyPublisher() }
 
     private let isScrubbingSubject = CurrentValueSubject<Bool, Never>(false)
     private let timeSubject = CurrentValueSubject<TimeInterval?, Never>(nil)
+    private let progressSubject = CurrentValueSubject<Double, Never>(0)
 
     private var duration: TimeInterval = 0
     private var isPlaying = false
@@ -40,6 +42,16 @@ final class Scrubber {
             .compactMap { $0 }
             .sink { [weak self] duration in
                 self?.duration = duration
+            }
+            .store(in: &cancellables)
+
+        let duration = player.durationSeconds.compactMap { $0 }
+
+        timeSubject
+            .compactMap { $0 }
+            .combineLatest(duration) { $0 / $1 }
+            .sink { [weak self] progress in
+                self?.progressSubject.send(progress)
             }
             .store(in: &cancellables)
     }

@@ -12,6 +12,8 @@
 		7867CA2C29A64A79007EDCED /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867CA2B29A64A79007EDCED /* PlayerControlsView.swift */; };
 		F546B6F829A8B3CB0092EA7A /* PlayerControlsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B6F729A8B3CB0092EA7A /* PlayerControlsViewModel.swift */; };
 		F546B6FA29A8BA090092EA7A /* CaseIterable+Next.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B6F929A8BA090092EA7A /* CaseIterable+Next.swift */; };
+		F546B6FE29A8D4D90092EA7A /* PlayerCoordinateSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B6FD29A8D4D90092EA7A /* PlayerCoordinateSpace.swift */; };
+		F546B70029A8D6EB0092EA7A /* ScrubberFrameKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B6FF29A8D6EB0092EA7A /* ScrubberFrameKey.swift */; };
 		F5A456E1299E11770093E14E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E0299E11770093E14E /* PlayerView.swift */; };
 		F5A456E3299E28A60093E14E /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E2299E28A50093E14E /* PlayerControls.swift */; };
 		F5A456E6299E38CC0093E14E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E5299E38CC0093E14E /* Global.swift */; };
@@ -40,6 +42,8 @@
 		7867CA2B29A64A79007EDCED /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		F546B6F729A8B3CB0092EA7A /* PlayerControlsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsViewModel.swift; sourceTree = "<group>"; };
 		F546B6F929A8BA090092EA7A /* CaseIterable+Next.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Next.swift"; sourceTree = "<group>"; };
+		F546B6FD29A8D4D90092EA7A /* PlayerCoordinateSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinateSpace.swift; sourceTree = "<group>"; };
+		F546B6FF29A8D6EB0092EA7A /* ScrubberFrameKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrubberFrameKey.swift; sourceTree = "<group>"; };
 		F5A456E0299E11770093E14E /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		F5A456E2299E28A50093E14E /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		F5A456E5299E38CC0093E14E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -82,6 +86,16 @@
 				F546B6F729A8B3CB0092EA7A /* PlayerControlsViewModel.swift */,
 			);
 			path = PlayerControlsView;
+			sourceTree = "<group>";
+		};
+		F546B6FC29A8D4C50092EA7A /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				F5A456EB299F5EAF0093E14E /* Player */,
+				F546B6FD29A8D4D90092EA7A /* PlayerCoordinateSpace.swift */,
+				F546B6FF29A8D6EB0092EA7A /* ScrubberFrameKey.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		F5A456EA299F5EA40093E14E /* Views */ = {
@@ -135,7 +149,7 @@
 				F5A456E5299E38CC0093E14E /* Global.swift */,
 				F5DF297E299CB38E00CF509D /* PlayerViewApp.swift */,
 				F5A456FE29A3B75D0093E14E /* Extensions */,
-				F5A456EB299F5EAF0093E14E /* Player */,
+				F546B6FC29A8D4C50092EA7A /* Types */,
 				F5A456EE299F631D0093E14E /* UIKit */,
 				F5A456EA299F5EA40093E14E /* Views */,
 			);
@@ -270,7 +284,9 @@
 				F5B8C9BB29A891CD006218DE /* Asset.swift in Sources */,
 				F5A456F729A379E90093E14E /* Comparable+Clamped.swift in Sources */,
 				F5B8C9BC29A891CD006218DE /* Player.swift in Sources */,
+				F546B6FE29A8D4D90092EA7A /* PlayerCoordinateSpace.swift in Sources */,
 				F5A456FD29A3B6D80093E14E /* PlayPauseView.swift in Sources */,
+				F546B70029A8D6EB0092EA7A /* ScrubberFrameKey.swift in Sources */,
 				F5DA878329A8AFF90088279B /* PlayerControlsModel.swift in Sources */,
 				F5DF298D299CB3A700CF509D /* AVPlayerView.swift in Sources */,
 				F5B8C9C129A89712006218DE /* PreviewWindowViewModel.swift in Sources */,

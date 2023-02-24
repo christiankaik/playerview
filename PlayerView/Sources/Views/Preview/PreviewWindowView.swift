@@ -3,15 +3,23 @@ import SwiftUI
 struct PreviewWindowView: View {
     @StateObject private var viewModel: PreviewWindowViewModel
 
-    init(scrubber: Scrubber) {
-        _viewModel = StateObject(wrappedValue: PreviewWindowViewModel(scrubber: scrubber, maximumWidth: 150))
+    private let width: CGFloat
+
+    private var height: CGFloat {
+        width / (16 / 9)
+    }
+
+    init(scrubber: Scrubber, width: CGFloat) {
+        _viewModel = StateObject(wrappedValue: PreviewWindowViewModel(scrubber: scrubber, maximumWidth: width))
+        self.width = width
     }
 
     var body: some View {
         ScrubberPreviewImage(image: viewModel.image)
-            .frame(width: 150, height: 150 / (16 / 9))
+            .frame(width: width, height: height)
             .allowsHitTesting(false)
             .border(Color(uiColor: .darkGray))
-        //.opacity(viewModel.isScrubbing ? 1 : 0)
+            .opacity(viewModel.isScrubbing ? 1 : 0)
+            .animation(.spring(), value: viewModel.isScrubbing)
     }
 }
