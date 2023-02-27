@@ -15,6 +15,7 @@
 		F546B6FE29A8D4D90092EA7A /* PlayerCoordinateSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B6FD29A8D4D90092EA7A /* PlayerCoordinateSpace.swift */; };
 		F546B70029A8D6EB0092EA7A /* ScrubberFrameKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B6FF29A8D6EB0092EA7A /* ScrubberFrameKey.swift */; };
 		F546B70229ACB1570092EA7A /* PlayerOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70129ACB1570092EA7A /* PlayerOverlayView.swift */; };
+		F546B70529ACB3020092EA7A /* CPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70429ACB3020092EA7A /* CPlayerViewModel.swift */; };
 		F5A456E1299E11770093E14E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E0299E11770093E14E /* PlayerView.swift */; };
 		F5A456E3299E28A60093E14E /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E2299E28A50093E14E /* PlayerControls.swift */; };
 		F5A456E6299E38CC0093E14E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E5299E38CC0093E14E /* Global.swift */; };
@@ -46,6 +47,7 @@
 		F546B6FD29A8D4D90092EA7A /* PlayerCoordinateSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinateSpace.swift; sourceTree = "<group>"; };
 		F546B6FF29A8D6EB0092EA7A /* ScrubberFrameKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrubberFrameKey.swift; sourceTree = "<group>"; };
 		F546B70129ACB1570092EA7A /* PlayerOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerOverlayView.swift; sourceTree = "<group>"; };
+		F546B70429ACB3020092EA7A /* CPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPlayerViewModel.swift; sourceTree = "<group>"; };
 		F5A456E0299E11770093E14E /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		F5A456E2299E28A50093E14E /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		F5A456E5299E38CC0093E14E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -100,15 +102,24 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
-		F5A456EA299F5EA40093E14E /* Views */ = {
+		F546B70329ACB2FA0092EA7A /* CPlayerView */ = {
 			isa = PBXGroup;
 			children = (
 				F5DF2980299CB38E00CF509D /* CPlayerView.swift */,
+				F546B70429ACB3020092EA7A /* CPlayerViewModel.swift */,
+			);
+			path = CPlayerView;
+			sourceTree = "<group>";
+		};
+		F5A456EA299F5EA40093E14E /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				F546B70129ACB1570092EA7A /* PlayerOverlayView.swift */,
 				F5A456E0299E11770093E14E /* PlayerView.swift */,
 				F5A456FC29A3B6D80093E14E /* PlayPauseView.swift */,
 				F5A456F429A366980093E14E /* ScrubberView.swift */,
 				7867CA2929A6461D007EDCED /* VideoContentView.swift */,
+				F546B70329ACB2FA0092EA7A /* CPlayerView */,
 				F5DA878129A8AFEE0088279B /* PlayerControls */,
 				F546B6F629A8B3BE0092EA7A /* PlayerControlsView */,
 				F5B8C9C229A89AF6006218DE /* Preview */,
@@ -299,6 +310,7 @@
 				F5B8C9BF29A891EF006218DE /* Scrubber.swift in Sources */,
 				F5A456E3299E28A60093E14E /* PlayerControls.swift in Sources */,
 				F5DF2981299CB38E00CF509D /* CPlayerView.swift in Sources */,
+				F546B70529ACB3020092EA7A /* CPlayerViewModel.swift in Sources */,
 				F5A456E1299E11770093E14E /* PlayerView.swift in Sources */,
 				F5A4570029A3B7670093E14E /* Date+Duration.swift in Sources */,
 				F5DF297F299CB38E00CF509D /* PlayerViewApp.swift in Sources */,
