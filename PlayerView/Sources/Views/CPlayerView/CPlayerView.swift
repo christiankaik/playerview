@@ -7,6 +7,18 @@ struct CPlayerView: View {
 
     @StateObject private var viewModel: CPlayerViewModel
     @State private var showControls: Bool = true
+    @State private var videoGravity: AVLayerVideoGravity = .resizeAspect
+
+    private var zoomGesture: some Gesture {
+        MagnificationGesture()
+            .onEnded { scale in
+                if scale > 1 {
+                    videoGravity = .resizeAspectFill
+                } else {
+                    videoGravity = .resizeAspect
+                }
+            }
+    }
 
     init(player: AVPlayer) {
         let playerObject = Player(player: player)
@@ -18,12 +30,13 @@ struct CPlayerView: View {
 
     var body: some View {
         ZStack {
-            VideoContentView(scrubber.player)
+            VideoContentView(scrubber.player, videoGravity: $videoGravity)
                 .onTapGesture {
                     withAnimation(.spring()) {
                         showControls.toggle()
                     }
                 }
+                .gesture(zoomGesture)
 
             PlayerOverlayView(scrubber: scrubber, showControls: $showControls)
                 .padding()
@@ -39,7 +52,6 @@ struct CPlayerView: View {
                 Text("Something went wrong")
             }
         }
-
     }
 }
 
