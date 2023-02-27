@@ -8,7 +8,7 @@ final class PlayerControlsViewModel: ObservableObject {
 
     private var isPlaying = false
     private var idleTimer: Timer?
-    private var cancellables = Set<AnyCancellable>()
+    private var isPlayingCancellable: AnyCancellable?
 
     init(scrubber: Scrubber) {
         self.scrubber = scrubber
@@ -17,7 +17,7 @@ final class PlayerControlsViewModel: ObservableObject {
     }
 
     private func bind() {
-        scrubber.player.isPlaying
+        isPlayingCancellable = scrubber.player.isPlaying
             .receive(on: RunLoop.main)
             .sink { [weak self] isPlaying in
                 self?.isPlaying = isPlaying
@@ -26,8 +26,8 @@ final class PlayerControlsViewModel: ObservableObject {
                     self?.refreshIdleTimer()
                 } else {
                     self?.cancelIdleTimer()
-                }            }
-            .store(in: &cancellables)
+                }
+            }
     }
 
     func refreshIdleTimerIfPlaying() {

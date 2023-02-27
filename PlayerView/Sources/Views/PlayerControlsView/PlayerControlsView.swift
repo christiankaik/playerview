@@ -19,5 +19,12 @@ struct PlayerControlsView: View {
                 self.showControls = showControls
             }
         }
+        .onChange(of: showControls) { showControls in
+            guard showControls else {
+                return
+            }
+
+            viewModel.refreshIdleTimerIfPlaying()
+        }
     }
 }
