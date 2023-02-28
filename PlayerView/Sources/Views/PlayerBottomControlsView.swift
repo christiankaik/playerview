@@ -1,30 +1,25 @@
-import Foundation
 import SwiftUI
 
-struct PlayerOverlayView: View {
+struct PlayerBottomControlsView: View {
     static let previewFrameWidth: CGFloat = 150
 
-    private let scrubber: Scrubber
+    let scrubber: Scrubber
+    let onInteract: () -> Void
 
-    @Binding var showControls: Bool
-    @State private var scrubberFrame: CGRect?
-    @State private var offsetX: CGFloat
+    @State private var scrubberFrame: CGRect? = nil
+    @State private var offsetX: CGFloat = 0
 
-    init(scrubber: Scrubber, showControls: Binding<Bool>) {
+    init(scrubber: Scrubber, onInteract: @escaping (() -> Void)) {
         self.scrubber = scrubber
-        _showControls = showControls
-        self.scrubberFrame = nil
-        self.offsetX = 0
+        self.onInteract = onInteract
     }
 
     var body: some View {
         VStack(alignment: .leading) {
-            Spacer()
-
             PreviewWindowView(scrubber: scrubber, width: Self.previewFrameWidth)
                 .offset(x: offsetX)
 
-            PlayerControlsView(scrubber: scrubber, showControls: $showControls)
+            PlayerControls(scrubber: scrubber, onInteract: onInteract)
         }
         .coordinateSpace(.playerControls)
         .onPreferenceChange(ScrubberFrameKey.self) { frame in

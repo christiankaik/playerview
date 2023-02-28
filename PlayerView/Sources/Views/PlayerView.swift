@@ -4,11 +4,15 @@ import AVFoundation
 struct UIPlayerView: UIViewRepresentable {
     var player: AVPlayer
 
-    @Binding var videoGravity: AVLayerVideoGravity
+    @Binding var videoGravityResizeAspect: Bool
 
-    init(player: Player, videoGravity: Binding<AVLayerVideoGravity> = .constant(.resizeAspect)) {
+    private var videoGravity: AVLayerVideoGravity {
+        videoGravityResizeAspect ? .resizeAspect : .resizeAspectFill
+    }
+
+    init(player: Player, videoGravityResizeAspect: Binding<Bool> = .constant(true)) {
         self.player = player.player
-        _videoGravity = videoGravity
+        _videoGravityResizeAspect = videoGravityResizeAspect
     }
     
     func makeUIView(context _: Context) -> AVPlayerView {

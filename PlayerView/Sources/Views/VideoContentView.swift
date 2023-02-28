@@ -4,15 +4,15 @@ import AVFoundation
 struct VideoContentView: View {
     private let player: Player
 
-    @Binding var videoGravity: AVLayerVideoGravity
+    @Binding var videoGravityResizeAspect: Bool
 
-    init(_ player: Player, videoGravity: Binding<AVLayerVideoGravity>) {
+    init(_ player: Player, videoGravityResizeAspect: Binding<Bool>) {
         self.player = player
-        _videoGravity = videoGravity
+        _videoGravityResizeAspect = videoGravityResizeAspect
     }
 
     var body: some View {
-        UIPlayerView(player: player, videoGravity: _videoGravity)
+        UIPlayerView(player: player, videoGravityResizeAspect: _videoGravityResizeAspect)
             .edgesIgnoringSafeArea(.all)
             .onAppear {
                 player.play()
