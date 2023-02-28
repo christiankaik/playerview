@@ -68,8 +68,6 @@ struct PlayerControls: View {
                     onInteract?()
                 }
         }
-        .preferredColorScheme(.dark)
-        .tint(.white.opacity(0.7))
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
         .frame(idealHeight: 100)

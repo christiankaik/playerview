@@ -43,6 +43,8 @@ struct CPlayerView: View {
         }
         .persistentSystemOverlays(.hidden)
         .background(.black)
+        .preferredColorScheme(.dark)
+        .tint(.white.opacity(0.7))
         .alert(isPresented: $viewModel.isError, error: viewModel.error) { error in
             // Lets ignore this for now
         } message: { error in

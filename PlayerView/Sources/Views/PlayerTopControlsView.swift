@@ -24,7 +24,5 @@ struct PlayerTopControlsView: View {
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
-        .preferredColorScheme(.dark)
-        .tint(.white.opacity(0.7))
     }
 }
