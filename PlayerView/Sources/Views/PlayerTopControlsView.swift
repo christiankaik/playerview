@@ -1,7 +1,17 @@
 import SwiftUI
 
+private extension View {
+    func topControlsButtonStyle() -> some View {
+        self.padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+    }
+}
+
 struct PlayerTopControlsView: View {
     @Binding var videoGravityResizeAspect: Bool
+    @Binding var isPresented: Bool
 
     let onInteract: () -> Void
 
@@ -11,6 +21,13 @@ struct PlayerTopControlsView: View {
 
     var body: some View {
         HStack {
+            Button {
+                isPresented = false
+            } label: {
+                Image(systemName: "xmark")
+            }
+            .topControlsButtonStyle()
+
             Spacer()
 
             Button {
@@ -19,10 +36,7 @@ struct PlayerTopControlsView: View {
             } label: {
                 Image(systemName: zoomSymbolName)
             }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            .topControlsButtonStyle()
         }
     }
 }

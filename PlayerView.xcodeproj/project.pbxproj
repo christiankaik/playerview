@@ -17,6 +17,7 @@
 		F546B70229ACB1570092EA7A /* PlayerOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70129ACB1570092EA7A /* PlayerOverlayView.swift */; };
 		F546B70529ACB3020092EA7A /* CPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70429ACB3020092EA7A /* CPlayerViewModel.swift */; };
 		F546B70829ADF8080092EA7A /* PlayerTopControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70729ADF8080092EA7A /* PlayerTopControlsView.swift */; };
+		F546B70A29AE52A10092EA7A /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70929AE52A10092EA7A /* PlaylistView.swift */; };
 		F5A456E1299E11770093E14E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E0299E11770093E14E /* PlayerView.swift */; };
 		F5A456E3299E28A60093E14E /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E2299E28A50093E14E /* PlayerControls.swift */; };
 		F5A456E6299E38CC0093E14E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E5299E38CC0093E14E /* Global.swift */; };
@@ -50,6 +51,7 @@
 		F546B70129ACB1570092EA7A /* PlayerOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerOverlayView.swift; sourceTree = "<group>"; };
 		F546B70429ACB3020092EA7A /* CPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPlayerViewModel.swift; sourceTree = "<group>"; };
 		F546B70729ADF8080092EA7A /* PlayerTopControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTopControlsView.swift; sourceTree = "<group>"; };
+		F546B70929AE52A10092EA7A /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		F5A456E0299E11770093E14E /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		F5A456E2299E28A50093E14E /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		F5A456E5299E38CC0093E14E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -116,12 +118,13 @@
 		F5A456EA299F5EA40093E14E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7867CA2B29A64A79007EDCED /* PlayerBottomControlsView.swift */,
+				F546B70729ADF8080092EA7A /* PlayerTopControlsView.swift */,
 				F5A456E0299E11770093E14E /* PlayerView.swift */,
+				F546B70929AE52A10092EA7A /* PlaylistView.swift */,
 				F5A456FC29A3B6D80093E14E /* PlayPauseView.swift */,
 				F5A456F429A366980093E14E /* ScrubberView.swift */,
 				7867CA2929A6461D007EDCED /* VideoContentView.swift */,
-				7867CA2B29A64A79007EDCED /* PlayerBottomControlsView.swift */,
-				F546B70729ADF8080092EA7A /* PlayerTopControlsView.swift */,
 				F546B70329ACB2FA0092EA7A /* CPlayerView */,
 				F5DA878129A8AFEE0088279B /* PlayerControls */,
 				F546B70629ADF54F0092EA7A /* PlayerOverlayView */,
@@ -310,6 +313,7 @@
 				F5DF298D299CB3A700CF509D /* AVPlayerView.swift in Sources */,
 				F5B8C9C129A89712006218DE /* PreviewWindowViewModel.swift in Sources */,
 				7867CA2C29A64A79007EDCED /* PlayerBottomControlsView.swift in Sources */,
+				F546B70A29AE52A10092EA7A /* PlaylistView.swift in Sources */,
 				7867CA2829A644F0007EDCED /* PreviewWindowView.swift in Sources */,
 				F5B8C9BF29A891EF006218DE /* Scrubber.swift in Sources */,
 				F5A456E3299E28A60093E14E /* PlayerControls.swift in Sources */,

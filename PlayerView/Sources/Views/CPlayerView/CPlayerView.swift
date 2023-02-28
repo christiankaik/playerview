@@ -9,6 +9,8 @@ struct CPlayerView: View {
     @State private var showControls = true
     @State private var videoGravityResizeAspect = true
 
+    @Binding var isPresented: Bool
+
     private var zoomGesture: some Gesture {
         MagnificationGesture()
             .onEnded { scale in
@@ -16,12 +18,13 @@ struct CPlayerView: View {
             }
     }
 
-    init(player: AVPlayer) {
+    init(player: AVPlayer, isPresented: Binding<Bool>) {
         let playerObject = Player(player: player)
 
         self.player = playerObject
         self.scrubber = Scrubber(player: self.player)
         _viewModel = StateObject(wrappedValue: .init(player: playerObject))
+        _isPresented = isPresented
     }
 
     var body: some View {
@@ -37,7 +40,8 @@ struct CPlayerView: View {
             PlayerOverlayView(
                 scrubber: scrubber,
                 showControls: $showControls,
-                videoGravityResizeAspect: $videoGravityResizeAspect
+                videoGravityResizeAspect: $videoGravityResizeAspect,
+                isPresented: _isPresented
             )
             .padding()
         }
@@ -46,7 +50,9 @@ struct CPlayerView: View {
         .preferredColorScheme(.dark)
         .tint(.white.opacity(0.7))
         .alert(isPresented: $viewModel.isError, error: viewModel.error) { error in
-            // Lets ignore this for now
+            Button("Too Bad 😕") {
+                isPresented = false
+            }
         } message: { error in
             if let failureReason = error.failureReason {
                 Text(failureReason)
@@ -59,7 +65,7 @@ struct CPlayerView: View {
 
 struct CPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        CPlayerView(player: AVPlayer(url: streamUrl))
+        CPlayerView(player: AVPlayer(url: streamUrl), isPresented: .constant(true))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
