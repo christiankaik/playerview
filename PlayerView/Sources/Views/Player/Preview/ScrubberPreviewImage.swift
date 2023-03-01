@@ -10,9 +10,6 @@ struct ScrubberPreviewImage: View {
             if let image {
                 Image(uiImage: image)
                     .resizable()
-            } else {
-                ProgressView()
-                    .progressViewStyle(.circular)
             }
         }
     }

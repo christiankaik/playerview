@@ -3,6 +3,8 @@ import SwiftUI
 struct PreviewWindowView: View {
     @StateObject private var viewModel: PreviewWindowViewModel
 
+    @State private var image: UIImage?
+
     private let width: CGFloat
 
     private var height: CGFloat {
@@ -15,11 +17,14 @@ struct PreviewWindowView: View {
     }
 
     var body: some View {
-        ScrubberPreviewImage(image: viewModel.image)
+        ScrubberPreviewImage(image: image)
+            .onReceive(viewModel.$image.throttle(for: 0.5, scheduler: RunLoop.main, latest: true)) { image in
+                self.image = image
+            }
             .frame(width: width, height: height)
             .allowsHitTesting(false)
             .border(Color(uiColor: .darkGray))
-            .opacity(viewModel.isScrubbing ? 1 : 0)
+            .opacity(viewModel.show ? 1 : 0)
             .animation(.spring(), value: viewModel.isScrubbing)
     }
 }

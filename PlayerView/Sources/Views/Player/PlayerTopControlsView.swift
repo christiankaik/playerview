@@ -2,8 +2,8 @@ import SwiftUI
 
 private extension View {
     func topControlsButtonStyle() -> some View {
-        self.padding(.horizontal, 12)
-            .padding(.vertical, 8)
+        self.padding(.horizontal, 16)
+            .padding(.vertical, 12)
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
     }

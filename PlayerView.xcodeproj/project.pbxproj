@@ -20,6 +20,8 @@
 		F546B70A29AE52A10092EA7A /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70929AE52A10092EA7A /* PlaylistView.swift */; };
 		F546B70C29AF442A0092EA7A /* View+SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70B29AF442A0092EA7A /* View+SimpleAlert.swift */; };
 		F546B70E29AF44510092EA7A /* ErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B70D29AF44510092EA7A /* ErrorInfo.swift */; };
+		F546B71129AF66DE0092EA7A /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B71029AF66DE0092EA7A /* PlaylistViewModel.swift */; };
+		F546B71329AF672B0092EA7A /* PlaylistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F546B71229AF672B0092EA7A /* PlaylistItem.swift */; };
 		F5A456E1299E11770093E14E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E0299E11770093E14E /* PlayerView.swift */; };
 		F5A456E3299E28A60093E14E /* PlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456E2299E28A50093E14E /* PlayerControls.swift */; };
 		F5A456F529A366980093E14E /* ScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A456F429A366980093E14E /* ScrubberView.swift */; };
@@ -55,6 +57,8 @@
 		F546B70929AE52A10092EA7A /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		F546B70B29AF442A0092EA7A /* View+SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SimpleAlert.swift"; sourceTree = "<group>"; };
 		F546B70D29AF44510092EA7A /* ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfo.swift; sourceTree = "<group>"; };
+		F546B71029AF66DE0092EA7A /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F546B71229AF672B0092EA7A /* PlaylistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItem.swift; sourceTree = "<group>"; };
 		F5A456E0299E11770093E14E /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		F5A456E2299E28A50093E14E /* PlayerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControls.swift; sourceTree = "<group>"; };
 		F5A456F429A366980093E14E /* ScrubberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrubberView.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			children = (
 				F546B70D29AF44510092EA7A /* ErrorInfo.swift */,
 				F546B6FD29A8D4D90092EA7A /* PlayerCoordinateSpace.swift */,
+				F546B71229AF672B0092EA7A /* PlaylistItem.swift */,
 				F546B6FF29A8D6EB0092EA7A /* ScrubberFrameKey.swift */,
 				F5A456EB299F5EAF0093E14E /* Player */,
 			);
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F546B70929AE52A10092EA7A /* PlaylistView.swift */,
+				F546B71029AF66DE0092EA7A /* PlaylistViewModel.swift */,
 				F546B70F29AF44800092EA7A /* Player */,
 			);
 			path = Views;
@@ -325,6 +331,8 @@
 				F546B70C29AF442A0092EA7A /* View+SimpleAlert.swift in Sources */,
 				F5B8C9C129A89712006218DE /* PreviewWindowViewModel.swift in Sources */,
 				7867CA2C29A64A79007EDCED /* PlayerBottomControlsView.swift in Sources */,
+				F546B71329AF672B0092EA7A /* PlaylistItem.swift in Sources */,
+				F546B71129AF66DE0092EA7A /* PlaylistViewModel.swift in Sources */,
 				F546B70A29AE52A10092EA7A /* PlaylistView.swift in Sources */,
 				7867CA2829A644F0007EDCED /* PreviewWindowView.swift in Sources */,
 				F546B70E29AF44510092EA7A /* ErrorInfo.swift in Sources */,

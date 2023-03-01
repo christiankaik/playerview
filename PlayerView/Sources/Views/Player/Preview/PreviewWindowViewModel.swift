@@ -6,8 +6,11 @@ import UIKit
 final class PreviewWindowViewModel: ObservableObject {
     let scrubber: Scrubber
 
-    @Published var isScrubbing: Bool = false
-    @Published var image: UIImage? = nil
+    @Published private(set) var isScrubbing = false
+    @Published private(set) var image: UIImage? = nil
+    @Published private(set) var canShow = false
+
+    var show: Bool { isScrubbing && canShow }
 
     private var imageGenerator: AVAssetImageGenerator? = nil
     private var maximumSize: CGSize
@@ -43,6 +46,10 @@ final class PreviewWindowViewModel: ObservableObject {
     }
 
     private func load(at time: CMTime) async {
+        guard canShow else {
+            return
+        }
+
         if let image = imageFromCache(at: time) {
             await setImage(image: image)
             return
@@ -58,7 +65,7 @@ final class PreviewWindowViewModel: ObservableObject {
         do {
             (cgImage, _) = try await imageGenerator.image(at: time)
         } catch {
-            await setImage(image: nil)
+            // No image was found, we ignore this and just show the last image
             return
         }
 
@@ -100,13 +107,37 @@ final class PreviewWindowViewModel: ObservableObject {
         cache.setObject(image, forKey: NSValue(time: time))
     }
 
+    private func setupImageGenerator(for asset: AVAsset?) {
+        clearImageGenerator()
+
+        canShow = false
+        image = nil
+        imageGenerator = makeImageGenerator(for: asset)
+
+        verifyImageGeneration()
+    }
+
+    private func verifyImageGeneration() {
+        Task {
+            guard
+                let imageGenerator,
+                let _ = try? await imageGenerator.image(at: .zero)
+            else {
+                return
+            }
+
+            Task { @MainActor in
+                canShow = true
+            }
+        }
+    }
+
     private func bind() {
         scrubber.player.asset
             .receive(on: RunLoop.main)
             .map { $0?.asset }
             .sink { [weak self] asset in
-                self?.image = nil
-                self?.imageGenerator = self?.makeImageGenerator(for: asset)
+                self?.setupImageGenerator(for: asset)
             }
             .store(in: &cancellables)
 
