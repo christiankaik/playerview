@@ -66,6 +66,7 @@ final class PlayerControlsModel: ObservableObject {
                 self?.isScrubbing = isScrubbing
                 self?.scrubberTimeSeconds = scrubberTime
 
+                self?.refreshEndTime()
                 self?.refreshTime()
             }
             .store(in: &cancellables)
@@ -102,21 +103,32 @@ final class PlayerControlsModel: ObservableObject {
     }
 
     private func refreshEndTime() {
-        if let durationSeconds, let timeSeconds, !durationSeconds.isNaN, !timeSeconds.isNaN {
-            switch durationMode {
-            case .differenceToCurrentTime:
-                endTime = "-\((durationSeconds - timeSeconds).durationFormatted)"
-            case .duration:
-                endTime = durationSeconds.durationFormatted
-            case .endDateTime:
-                let toEndTimeInterval = durationSeconds - timeSeconds
-
-                endTime = Date()
-                    .addingTimeInterval(toEndTimeInterval)
-                    .durationFormatted
-            }
+        if let scrubberTimeSeconds, let durationSeconds, isScrubbing {
+            endTime = "-\((durationSeconds - scrubberTimeSeconds).durationFormatted)"
+        } else if let durationSeconds, let timeSeconds {
+            adjustEndTime(for: timeSeconds, duration: durationSeconds)
         } else {
             endTime = "0:00"
+        }
+    }
+
+    private func adjustEndTime(for seconds: TimeInterval, duration: TimeInterval) {
+        guard !seconds.isNaN, !duration.isNaN else {
+            endTime = "0:00"
+            return
+        }
+
+        switch durationMode {
+        case .differenceToCurrentTime:
+            endTime = "-\((duration - seconds).durationFormatted)"
+        case .duration:
+            endTime = duration.durationFormatted
+        case .endDateTime:
+            let toEndTimeInterval = duration - seconds
+
+            endTime = Date()
+                .addingTimeInterval(toEndTimeInterval)
+                .durationFormatted
         }
     }
 }
