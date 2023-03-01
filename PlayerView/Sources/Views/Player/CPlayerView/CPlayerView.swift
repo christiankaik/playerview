@@ -49,23 +49,15 @@ struct CPlayerView: View {
         .background(.black)
         .preferredColorScheme(.dark)
         .tint(.white.opacity(0.7))
-        .alert(isPresented: $viewModel.isError, error: viewModel.error) { error in
-            Button("Too Bad 😕") {
-                isPresented = false
-            }
-        } message: { error in
-            if let failureReason = error.failureReason {
-                Text(failureReason)
-            } else {
-                Text("Something went wrong")
-            }
+        .simpleAlert(isPresented: $viewModel.isError, error: viewModel.error) {
+            isPresented = false
         }
     }
 }
 
 struct CPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        CPlayerView(player: AVPlayer(url: streamUrl), isPresented: .constant(true))
+        CPlayerView(player: AVPlayer(), isPresented: .constant(true))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
